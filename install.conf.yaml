@@ -1,0 +1,57 @@
+- defaults:
+    link:
+      create: true
+      force: true
+    shell:
+      stdin: true
+      stdout: true
+      quiet: true
+
+- clean: ["~"]
+
+- sudo:
+    - shell:
+      - pacman -Syu --noconfirm # Download & update mirrors
+      - pacman -S yay --noconfirm # Install YAY package manager
+    - 
+      command: chmod +x ./System/normal.sh
+      command: mkdir /usr/share/fonts/TTF
+      command: mv $MAIN_PATH/System/fonts/JetBrains\ Mono\ Regular\ Nerd\ Font\ Complete.ttf /usr/share/fonts/TTF/JetBrains\ Mono\ Regular\ Nerd\ Font\ Complete.ttf
+      command: mv $MAIN_PATH/System/fonts/Fira\ Code\ Regular\ Nerd\ Font\ Complete.ttf /usr/share/fonts/TTF/Fira\ Code\ Regular\ Nerd\ Font\ Complete.ttf
+- shell:
+  -
+    command: yay -S base-devel $(cat $HOME/.dotfiles/System/apps.txt | xargs) --noconfirm
+      
+- link:
+    ~/.gitconfig: gitconfig
+    ~/.zshrc: zshrc
+    ~/.p10k.zsh : p10k.zsh
+    ~/.themeRoot : p10kSU.zsh
+    ~/.config/picom/picom.conf: picom.conf
+
+    ~/.config/kitty/kitty.conf: kitty/kitty.conf
+    ~/.config/kitty/colors.ini: kitty/colors.ini
+    ~/.config/kitty/fonts.ini: kitty/fonts.ini
+
+    ~/.config/nvim/init.lua: nvim/init.lua
+    ~/.config/nvim/lua: nvim/lua
+    ~/.config/nvim/plugin: nvim/plugin
+
+    ~/.config/i3/config: i3/config
+
+    ~/.config/polybar/config: polybar/config
+    ~/.config/polybar/launch.sh: polybar/launch.sh
+    ~/.config/polybar/media_script.py: polybar/media_script.py
+    ~/.config/polybar/spotify_script.py: polybar/spotify_script.py
+    /usr/share/xournalpp/plugins/Shortcuts: xournal/Shortcuts
+
+- sudo:
+  - shell:
+      - chsh -s $(which zsh) $(/bin/ls /home)
+      - chsh -s $(which zsh) root
+      - 
+        command: ln -sf /home/$(/bin/ls /home/)/.themeRoot /root/.p10k.zsh 
+        command: ln -sf /home/$(/bin/ls /home/)/.zshrc /root/.zshrc
+- shell:
+  - 
+    command: ./System/normal.sh 

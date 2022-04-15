@@ -1,0 +1,4 @@
+plugin fzf-tab https://github.com/Aloxaf/fzf-tab
+plugin zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting 
+plugin zsh-autosuggestions     https://github.com/zsh-users/zsh-autosuggestions 
+theme powerlevel10k https://github.com/romkatv/powerlevel10k.git 
