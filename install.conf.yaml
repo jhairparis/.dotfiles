@@ -22,6 +22,7 @@
   -
     command: yay -S base-devel $(cat $HOME/.dotfiles/System/apps.txt | xargs) --noconfirm
       
+
 - link:
     ~/.gitconfig: gitconfig
     ~/.zshrc: zshrc
@@ -32,10 +33,6 @@
     ~/.config/kitty/kitty.conf: kitty/kitty.conf
     ~/.config/kitty/colors.ini: kitty/colors.ini
     ~/.config/kitty/fonts.ini: kitty/fonts.ini
-
-    ~/.config/nvim/init.lua: nvim/init.lua
-    ~/.config/nvim/lua: nvim/lua
-    ~/.config/nvim/plugin: nvim/plugin
 
     ~/.config/i3/config: i3/config
 
@@ -54,4 +51,5 @@
         command: ln -sf /home/$(/bin/ls /home/)/.zshrc /root/.zshrc
 - shell:
   - 
-    command: ./System/normal.sh 
+    - ./System/normal.sh 
+    - git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
