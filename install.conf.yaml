@@ -51,6 +51,7 @@
       path: config/fzf/*
       relink: true
     ~/.wezterm.lua: config/wezterm.lua
+    ~/Pictures/wallpapers: config/wallpapers
     ~/.config/starship.toml: config/starship.toml
     ~/.gitconfig: config/gitconfig
     ~/.config/nvim: config/nvim
