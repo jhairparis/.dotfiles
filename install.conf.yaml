@@ -1,55 +1,60 @@
 - defaults:
-    link:
-      create: true
-      force: true
     shell:
-      stdin: true
-      stdout: true
+      stdout: false
       quiet: true
+      stderr: true
 
 - clean: ["~"]
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
+
+- create:
+    - ~/.zsh/plugins
+    - ~/.fzf/shell
 
 - sudo:
+    - create:
+        /usr/share/fonts/TTF:
+          mode: 0700
     - shell:
-      - pacman -Syu --noconfirm # Download & update mirrors
-      - pacman -S yay --noconfirm # Install YAY package manager
-    - 
-      command: chmod +x ./System/normal.sh
-      command: mkdir /usr/share/fonts/TTF
-      command: mv $MAIN_PATH/System/fonts/JetBrains\ Mono\ Regular\ Nerd\ Font\ Complete.ttf /usr/share/fonts/TTF/JetBrains\ Mono\ Regular\ Nerd\ Font\ Complete.ttf
-      command: mv $MAIN_PATH/System/fonts/Fira\ Code\ Regular\ Nerd\ Font\ Complete.ttf /usr/share/fonts/TTF/Fira\ Code\ Regular\ Nerd\ Font\ Complete.ttf
+        - command: pacman -Syu --noconfirm
+          description: Update package database
+        - command: pacman -S base-devel --noconfirm
+          description: Install basic tools
+        - command: chsh -s $(which zsh) $(/bin/ls /home)
+          description: Set zsh as default shell
+        - command: chsh -s $(which zsh) root
+          description: Set zsh as default of root
+        - command: find ./config/fonts -type f -name "*.ttf" -exec mv '{}' /usr/share/fonts/TTF/ \;
+          description: Install fonts
+        - command: chmod +x ./apps/**.sh
+          description: Make apps/**.sh executable
+
 - shell:
-  -
-    command: yay -S base-devel $(cat $HOME/.dotfiles/System/apps.txt | xargs) --noconfirm
-      
+    - command: pamac install $(cat ./apps/automatic.txt | xargs) --no-confirm
+      describe: Install user apps from repositories
+      stdout: true
+      quiet: false
 
 - link:
-    ~/.gitconfig: gitconfig
-    ~/.zshrc: zshrc
-    ~/.p10k.zsh : p10k.zsh
-    ~/.themeRoot : p10kSU.zsh
-    ~/.config/picom/picom.conf: picom.conf
+    ~/.zshrc: config/zsh/zshrc
+    ~/.zsh/aliases.zsh: config/zsh/aliases.zsh
+    ~/.zsh/plugins:
+      glob: true
+      path: config/zsh/plugins/*
+      relink: true
+    ~/.fzf/shell:
+      glob: true
+      path: config/fzf/*
+      relink: true
+    ~/.wezterm.lua: config/wezterm.lua
+    ~/.config/starship.toml: config/starship.toml
+    ~/.gitconfig: config/gitconfig
+    ~/.config/nvim: config/nvim
 
-    ~/.config/kitty/kitty.conf: kitty/kitty.conf
-    ~/.config/kitty/colors.ini: kitty/colors.ini
-    ~/.config/kitty/fonts.ini: kitty/fonts.ini
-
-    ~/.config/i3/config: i3/config
-
-    ~/.config/polybar/config: polybar/config
-    ~/.config/polybar/launch.sh: polybar/launch.sh
-    ~/.config/polybar/media_script.py: polybar/media_script.py
-    ~/.config/polybar/spotify_script.py: polybar/spotify_script.py
-    /usr/share/xournalpp/plugins/Shortcuts: xournal/Shortcuts
-
-- sudo:
-  - shell:
-      - chsh -s $(which zsh) $(/bin/ls /home)
-      - chsh -s $(which zsh) root
-      - 
-        command: ln -sf /home/$(/bin/ls /home/)/.themeRoot /root/.p10k.zsh 
-        command: ln -sf /home/$(/bin/ls /home/)/.zshrc /root/.zshrc
 - shell:
-  - 
-    - ./System/normal.sh 
-    - git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+    - command: ./apps/fnm.sh
+      description: Install FNM

@@ -1,0 +1,15 @@
+[core]
+	autocrlf = false
+
+[includeIf "gitdir:/mnt/shared/coding/gitlab/"]
+  path = /home/jhair/.gitconfig-gitlab
+
+[user]
+  email = 70655025+jhairparis@users.noreply.github.com
+  name = Jhair Paris
+  signingkey = 6C36CF031C223030
+  ; email = 21571409-jhairparis@users.noreply.gitlab.com
+  ; signingkey = C38659CA47D803AB
+
+[commit]
+  gpgsign = true

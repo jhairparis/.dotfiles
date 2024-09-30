@@ -1,0 +1,38 @@
+export ZSH=$HOME/.zsh
+# Starship
+eval "$(starship init zsh)"
+
+# fnm
+FNM_PATH="/home/jhiar/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/jhiar/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
+
+# Autocompletion
+autoload -U compinit; compinit
+
+#-- Debug
+# git
+# export GIT_TRACE=1
+# QT
+# export QT_DEBUG_PLUGINS=1
+
+zstyle ':completion:*' menu select # selectable menu
+zstyle ':completion:*' matcher-list 'm:{[:lowe:][:uper:]-_}={[:upper:][:lower:]-_}' 'r:|=*' 'l:|=* r:|=*' # case insensitive completion
+zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*:*:kill:*processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01' # colorize kill list
+
+[[ -f $ZSH/aliases.zsh ]] && source $ZSH/aliases.zsh
+[[ -f $ZSH/plugins/plugins.zsh ]] && source $ZSH/plugins/plugins.zsh
+
+export PINENTRY_KDE_USE_WALLET=1
+
+GPG_TTY=$(readlink /proc/$$/fd/2)
+export GPG_TTY
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
+PATH=~/.console-ninja/.bin:$PATH
