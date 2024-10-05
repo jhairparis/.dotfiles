@@ -10,6 +10,9 @@
       force: true
     ~/.config:
       recursive: true
+    ~/.zshrc:
+      recursive: true
+
 
 - create:
     - ~/.zsh/plugins
@@ -32,10 +35,12 @@
           description: Install fonts
         - command: chmod +x ./apps/**.sh
           description: Make apps/**.sh executable
+        - command: pacman -S yay
+          description: Install yay
 
 - shell:
-    - command: pamac install $(cat ./apps/automatic.txt | xargs) --no-confirm
-      describe: Install user apps from repositories
+    - command: yay -S $(cat ./apps/automatic.txt | xargs) --noconfirm
+      description: Install user apps from repositories
       stdout: true
       quiet: false
 
@@ -55,6 +60,8 @@
     ~/.config/starship.toml: config/starship.toml
     ~/.gitconfig: config/gitconfig
     ~/.config/nvim: config/nvim
+    ~/.config/kglobalshortcutsrc: config/kglobalshortcutsrc
+    ~/.config/dolphinrc: config/dolphinrc
 
 - shell:
     - command: ./apps/fnm.sh
