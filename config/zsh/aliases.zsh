@@ -1,4 +1,23 @@
-# Utis
+# Utility keybindings for shell navigation in Zsh
+
+# Move to the beginning of the line (Home key)
+bindkey "\e[H" beginning-of-line
+# Move to the end of the line (End key)
+bindkey "\e[F" end-of-line
+
+# Delete the character under the cursor (Delete key)
+bindkey "\e[3~" delete-char
+
+# Delete the word before the cursor (Ctrl + Backspace)
+bindkey '^H' backward-kill-word
+# Delete the word after the cursor (Ctrl + Delete)
+bindkey '5~' kill-word
+
+# Move forward one word (Ctrl + Right arrow)
+bindkey '^[[1;5C' emacs-forward-word
+# Move backward one word (Ctrl + Left arrow)
+bindkey '^[[1;5D' emacs-backward-word
+
 alias zshconfig="nvim ~/.zshrc"
 alias xprop="xprop | grep WM_CLASS"
 
@@ -6,6 +25,7 @@ alias xprop="xprop | grep WM_CLASS"
 alias nv="nvim"
 alias pn="pnpm"
 alias open="dolphin"
+alias icat="wezterm imgcat"
 
 # ls
 alias ls='eza --icons=always -F -H --group-directories-first --git -1'
@@ -28,8 +48,9 @@ alias ga='git add'
 alias gc='git commit -m'
 alias gp='git push origin master'
 
+alias update='sudo pacman -Syu'
+alias yupdate="yay -Syu --noconfirm"
+
 #fix obvious typo's
 alias cd..='cd ..'
 alias pdw="pwd"
-alias upate='sudo pacman -Syu'
-alias upaten="pamac -Syu --noconfirm"
