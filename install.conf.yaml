@@ -10,13 +10,15 @@
       force: true
     ~/.config:
       recursive: true
+    ~/.config/nvim:
+      recursive: true
     ~/.zshrc:
       recursive: true
-
 
 - create:
     - ~/.zsh/plugins
     - ~/.fzf/shell
+    - ~/.config/nvim
 
 - sudo:
     - create:
@@ -59,7 +61,10 @@
     ~/Pictures/wallpapers: config/wallpapers
     ~/.config/starship.toml: config/starship.toml
     ~/.gitconfig: config/gitconfig
-    ~/.config/nvim: config/nvim
+    ~/.config/nvim:
+      glob: true
+      path: config/nvim/*
+      relink: true
     ~/.config/kglobalshortcutsrc: config/kglobalshortcutsrc
     ~/.config/dolphinrc: config/dolphinrc
 
