@@ -1,4 +1,5 @@
-# Utility keybindings for shell navigation in Zsh
+# Autocompletion
+bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # Move to the beginning of the line (Home key)
 bindkey "\e[H" beginning-of-line
@@ -30,7 +31,7 @@ alias icat="wezterm imgcat"
 # ls
 alias ls='eza --icons=always -F -H --group-directories-first --git -1'
 alias la='ls -a'
-alias lla='ls-al'
+alias lla='ls -al'
 alias ll='ls -l'
 
 # cat

@@ -1,4 +1,14 @@
 export ZSH=$HOME/.zsh
+
+# History
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+HISTFILE=$HOME/.zhistory
+SAVEHIST=1000
+HISTSIZE=999
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt EXTENDED_HISTORY
+
 # Starship
 eval "$(starship init zsh)"
 
@@ -12,7 +22,10 @@ fi
 eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 
 # Autocompletion
-autoload -U compinit; compinit
+zmodload zsh/complist
+autoload -U compinit
+compinit
+
 
 #-- Debug
 # git
@@ -20,14 +33,14 @@ autoload -U compinit; compinit
 # QT
 # export QT_DEBUG_PLUGINS=1
 
+[[ -f $ZSH/plugins/plugins.zsh ]] && source $ZSH/plugins/plugins.zsh
+[[ -f $ZSH/aliases.zsh ]] && source $ZSH/aliases.zsh
+
 zstyle ':completion:*' menu select # selectable menu
 zstyle ':completion:*' matcher-list 'm:{[:lowe:][:uper:]-_}={[:upper:][:lower:]-_}' 'r:|=*' 'l:|=* r:|=*' # case insensitive completion
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*:*:kill:*processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01' # colorize kill list
-
-[[ -f $ZSH/aliases.zsh ]] && source $ZSH/aliases.zsh
-[[ -f $ZSH/plugins/plugins.zsh ]] && source $ZSH/plugins/plugins.zsh
 
 export PINENTRY_KDE_USE_WALLET=1
 
@@ -52,3 +65,10 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# Android SDK
+export ANDROID_HOME=$HOME/Android/Sdk 
+
+export PATH=$PATH:$ANDROID_HOME/emulator 
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
