@@ -35,6 +35,8 @@
           description: Set zsh as default of root
         - command: find ./config/fonts -type f -name "*.ttf" -exec mv '{}' /usr/share/fonts/TTF/ \;
           description: Install fonts
+        - command: find "$(readlink -f ./config/wallpapers)" -maxdepth 1 -mindepth 1 -type d -print0 | while IFS= read -r -d '' dir; do ln -sf "$dir" /usr/share/wallpapers/; done;
+          description: Link wallpapers
         - command: chmod +x ./apps/**.sh
           description: Make apps/**.sh executable
         - command: pacman -S yay
@@ -58,7 +60,6 @@
       path: config/fzf/*
       relink: true
     ~/.wezterm.lua: config/wezterm.lua
-    ~/Pictures/wallpapers: config/wallpapers
     ~/.config/starship.toml: config/starship.toml
     ~/.gitconfig: config/gitconfig
     ~/.config/nvim:

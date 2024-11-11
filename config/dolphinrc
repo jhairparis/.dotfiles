@@ -8,6 +8,9 @@ EditableUrl=true
 Version=202
 ViewPropsTimestamp=2024,10,2,10,30,12.632
 
+[IconsMode]
+PreviewSize=96
+
 [KFileDialog Settings]
 Places Icons Auto-resize=false
 Places Icons Static Size=22
