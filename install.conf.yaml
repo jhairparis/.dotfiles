@@ -41,6 +41,10 @@
           description: Make apps/**.sh executable
         - command: pacman -S yay
           description: Install yay
+        - command: chmod +x ./config/konsole
+          description: Make konsole executable
+    - link:
+        /usr/local/bin/konsole: config/konsole
 
 - shell:
     - command: yay -S $(cat ./apps/automatic.txt | xargs) --noconfirm

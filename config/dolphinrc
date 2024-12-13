@@ -1,8 +1,5 @@
 MenuBar=Disabled
 
-[ContextMenu]
-ShowOpenTerminal=false
-
 [General]
 EditableUrl=true
 Version=202

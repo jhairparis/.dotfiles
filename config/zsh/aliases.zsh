@@ -27,6 +27,8 @@ alias nv="nvim"
 alias pn="pnpm"
 alias open="dolphin"
 alias icat="wezterm imgcat"
+alias pdftool="java -jar /usr/share/java/stirling-pdf.jar"
+alias konsole='wezterm'
 
 # ls
 alias ls='eza --icons=always -F -H --group-directories-first --git -1'
