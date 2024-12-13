@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Verificar si el argumento `-e` está presente
+if [[ "$*" == *"-e"* ]]; then
+    # Extraer el comando después de `-e` y ejecutarlo en WezTerm
+    COMMAND=$(echo "$@" | sed -n 's/.*-e //p')
+    wezterm start -- $COMMAND
+else
+    # Si no hay `-e`, simplemente abre WezTerm
+    wezterm start
+fi
+
+
