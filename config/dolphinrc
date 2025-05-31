@@ -1,12 +1,16 @@
 MenuBar=Disabled
 
+[Baloo KEditCommentDialog]
+1920x1080 screen: Height=252
+1920x1080 screen: Width=276
+
 [General]
 EditableUrl=true
 Version=202
 ViewPropsTimestamp=2024,10,2,10,30,12.632
 
 [IconsMode]
-PreviewSize=96
+PreviewSize=160
 
 [KFileDialog Settings]
 Places Icons Auto-resize=false
@@ -14,7 +18,10 @@ Places Icons Static Size=22
 
 [MainWindow]
 MenuBar=Disabled
-ToolBarsMovable=Disabled
 
 [PreviewSettings]
 Plugins=appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs
+
+[ViewPropertiesDialog]
+1920x1080 screen: Height=334
+1920x1080 screen: Width=379
