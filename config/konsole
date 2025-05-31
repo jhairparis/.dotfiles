@@ -1,13 +1,41 @@
 #!/bin/bash
 
-# Verificar si el argumento `-e` está presente
-if [[ "$*" == *"-e"* ]]; then
-    # Extraer el comando después de `-e` y ejecutarlo en WezTerm
-    COMMAND=$(echo "$@" | sed -n 's/.*-e //p')
-    wezterm start -- $COMMAND
-else
-    # Si no hay `-e`, simplemente abre WezTerm
-    wezterm start
+# --- Parse arguments ---
+args=("$@")
+workdir=""
+cmd=()
+i=0
+
+while (( i < ${#args[@]} )); do
+    case "${args[i]}" in
+        --workdir)
+            # Soporta: --workdir <ruta>
+            ((i++))
+            workdir="${args[i]}"
+            ;;
+        -w)
+            # Opcional: -w <ruta>
+            ((i++))
+            workdir="${args[i]}"
+            ;;
+        -e)
+            # Todo lo que siga después de -e es el comando
+            cmd=( "${args[@]:i+1}" )
+            break
+            ;;
+    esac
+    ((i++))
+done
+
+# --- Construir línea para wezterm ---
+wezterm_args=(start)
+if [[ -n "$workdir" ]]; then
+    wezterm_args+=(--cwd "$workdir")
 fi
 
+if (( ${#cmd[@]} > 0 )); then
+    wezterm_args+=(-- "${cmd[@]}")
+fi
+
+wezterm "${wezterm_args[@]}"
 
