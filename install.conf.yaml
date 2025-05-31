@@ -19,6 +19,7 @@
     - ~/.zsh/plugins
     - ~/.fzf/shell
     - ~/.config/nvim
+    - ~/.config/Stirling-PDF
 
 - sudo:
     - create:

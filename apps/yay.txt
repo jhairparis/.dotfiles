@@ -18,5 +18,6 @@ screenkey
 krita
 zed
 ttf-wps-fonts
+stirling-pdf-bin 
 xclip
 btop
