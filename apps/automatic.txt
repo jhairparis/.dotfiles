@@ -21,3 +21,4 @@ zed
 ttf-wps-fonts
 zen-browser-avx2-bin
 xclip
+btop
