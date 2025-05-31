@@ -47,7 +47,7 @@
         /usr/local/bin/konsole: config/konsole
 
 - shell:
-    - command: yay -S $(cat ./apps/automatic.txt | xargs) --noconfirm
+    - command: yay -S $(cat ./apps/yay.txt | xargs) --noconfirm
       description: Install user apps from repositories
       stdout: true
       quiet: false

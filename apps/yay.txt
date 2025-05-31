@@ -16,9 +16,7 @@ vlc
 blender
 screenkey
 krita
-wps-office
 zed
 ttf-wps-fonts
-zen-browser-avx2-bin
 xclip
 btop
