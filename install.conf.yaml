@@ -51,6 +51,18 @@
       description: Install user apps from repositories
       stdout: true
       quiet: false
+    - command: pacman -S flatpak --noconfirm
+      description: Install Flatpak
+      stdout: true
+      quiet: false
+    - command: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+      description: Add Flathub repository
+      stdout: true
+      quiet: false
+    - command: flatpak install flathub $(cat ./apps/flatpak.txt | xargs) -y
+      description: Install Flatpak applications
+      stdout: true
+      quiet: false
 
 - link:
     ~/.zshrc: config/zsh/zshrc
