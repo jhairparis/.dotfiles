@@ -27,7 +27,7 @@ alias nv="nvim"
 alias pn="pnpm"
 alias open="dolphin"
 alias icat="wezterm imgcat"
-alias pdftool="cd /home/jhair/.config/Stirling-PDF && xdg-open http://localhost:8080 && nohup java -jar /usr/share/java/stirling-pdf.jar"
+alias pdftool="cd /home/jhair/.config/Stirling-PDF && xdg-open http://localhost:8080/multi-tool && nohup java -jar /usr/share/java/stirling-pdf.jar"
 alias konsole='wezterm'
 alias htop='btop'
 
