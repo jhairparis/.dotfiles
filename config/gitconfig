@@ -1,15 +1,23 @@
 [core]
 	autocrlf = false
 
-[includeIf "gitdir:/mnt/shared/coding/gitlab/"]
-  path = /home/jhair/.gitconfig-gitlab
-
 [user]
-  email = 70655025+jhairparis@users.noreply.github.com
   name = Jhair Paris
+  
+  Github
+  email = 70655025+jhairparis@users.noreply.github.com
   signingkey = 6C36CF031C223030
-  ; email = 21571409-jhairparis@users.noreply.gitlab.com
-  ; signingkey = C38659CA47D803AB
+
+  ;Gitlab
+  ;email = 21571409-jhairparis@users.noreply.gitlab.com
+  ;signingkey = C38659CA47D803AB
+
+  ;KDE
+  ; email = dev@jhairparis.com
+  ; signingkey = /home/jhair/.ssh/id_ed25519.pub
 
 [commit]
   gpgsign = true
+
+; [gpg]
+	; format = ssh

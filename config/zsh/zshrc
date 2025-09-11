@@ -49,20 +49,20 @@ export GPG_TTY
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 
 # >>> conda initialize >>>
-__conda_setup="$('/home/jhair/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/jhair/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/jhair/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/jhair/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/home/jhair/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/jhair/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/jhair/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/jhair/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 
 ## CONDA
-export PATH="/home/$USER/miniconda3/bin:$PATH"
+# export PATH="/home/$USER/miniconda3/bin:$PATH"
 
 # Android SDK
 export ANDROID_HOME=$HOME/Android/Sdk 
@@ -70,9 +70,21 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # CUDA
+# export PATH="/opt/cuda-11.7/bin:$PATH"
+# export PATH="/opt/cuda-11.7/bin:$PATH"
+# export CUDA_HOME="/opt/cuda-11.7"
+# export LD_LIBRARY_PATH=/opt/cuda-11.7/lib64:$LD_LIBRARY_PATH
+
 # export PATH="/opt/cuda/bin:$PATH"
 # export PATH="/opt/cuda11.8/bin:$PATH"
 # export CUDA_HOME="/opt/cuda11.8"
 # export LD_LIBRARY_PATH=/opt/cuda11.8/lib64:$LD_LIBRARY_PATH
+
 export CUDA_HOME="/opt/cuda"
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/jhair/.lmstudio/bin"
 
